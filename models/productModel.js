@@ -9,7 +9,7 @@ const create = async (newProduct) => {
 }
 
 const findAll = async () => {
-    return await Product.findAll();
+    return await Product.find();
 }
 
 export default {
