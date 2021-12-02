@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv';
 
 // routes
@@ -15,7 +15,8 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
     console.log('Connected to DB');
 })
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/product/', productRoutes);
 
