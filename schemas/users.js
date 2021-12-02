@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-import address from './addresses';
+import address from './addresses.js';
 
 let user = new Schema({
     firstName: String,

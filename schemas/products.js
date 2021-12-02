@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-
-const { Schema } = mongoose;
-
 import review from './reviews.js';
 import seller from './seller.js';
+
+const { Schema } = mongoose;
 
 const product = new Schema({
     name: String,
