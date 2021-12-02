@@ -8,7 +8,7 @@ import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 
-const PORT = 3000;
+const PORT = 8000;
 const app = express();
 
 dotenv.config();

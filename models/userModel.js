@@ -16,6 +16,11 @@ const findById = async (id) => {
     return await User.findById(id);
 }
 
+const findByEmail = async (email) => {
+    const [user] = await User.find({ email });    
+    return user;
+}
+
 const update = async (id, updatedUser) => {
     await User.findOneAndUpdate({ _id: id }, updatedUser);
 }
@@ -28,6 +33,7 @@ export default {
     create,
     findAll,
     findById,
+    findByEmail,
     update,
     deleteOne,
 };

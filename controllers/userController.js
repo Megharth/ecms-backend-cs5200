@@ -1,5 +1,19 @@
 import userModel from '../models/userModel.js';
 
+const authenticate = async (req, res, _next) => {
+    const { email, password } = req.body;
+    const user = await userModel.findByEmail(email);
+    if(user) {
+        if(password === user.password) {
+            res.status(200).json({ success: true });
+        } else {
+            res.status(401).json({ success: false });
+        }
+    } else {
+        res.json({ success: false, error: "User not found"});
+    }
+}
+
 const createUser = async (req, res, _next) => {
     const { user } = req.body;
     const newUser = await userModel.create(user);
@@ -51,6 +65,7 @@ const deleteUser = async(req, res, _next) => {
 
 
 export default {
+    authenticate,
     createUser,
     findAllUsers,
     findUser,
