@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 // routes
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 const PORT = 3000;
 const app = express();
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use('/product/', productRoutes);
 app.use('/user/', userRoutes);
+app.use('/order/', orderRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running at ${PORT}`);
