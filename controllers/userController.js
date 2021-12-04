@@ -1,10 +1,17 @@
 import userModel from '../models/userModel.js';
 
 const authenticate = async (req, res, _next) => {
-    const { email, password } = req.body;
+    const { email, password, userType } = req.body;
+
+    const userTypes = {
+        shopper: "SHOPPER",
+        admin: "ADMIN",
+        staff: "STAFF",
+    };
+
     const user = await userModel.findByEmail(email);
     if(user) {
-        if(password === user.password) {
+        if(password === user.password && userTypes[userType] === user.userType) {
             res.status(200).json({ success: true });
         } else {
             res.status(401).json({ success: false });
