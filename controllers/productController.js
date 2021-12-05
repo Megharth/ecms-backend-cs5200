@@ -10,18 +10,13 @@ const addReview = async (req, res, _next) => {
   const { review } = req.body;
   const { id } = req.params;
   const product = await productModel.findById(id);
-  if (product) {
-    const reviewObj = {
-      content: review,
-      created: new Date(),
-      updated: new Date(),
-    };
-    product.reviews.push(reviewObj);
+  if (product && review) {
+    product.reviews.push(review);
     await productModel.update(id, product);
     const updatedProduct = await productModel.findById(id);
     res.json({ updatedProduct });
   } else {
-    res.json({ success: false, error: "Product not found" });
+    res.json({ success: false, error: "Product or review not found" });
   }
 };
 const findAllProducts = async (_req, res, _next) => {
